@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">  
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="animation.css">
+</head>
+<body>
+	<div id="monkey"></div>
+	<div id="banana"></div>
+	<div id="shake"></div>
+
+	<script type="text/javascript">
+
+		var monkey = document.getElementById("monkey");
+		var banana = document.getElementById("banana");
+
+		//transition
+		// elem: monkey
+		// properties: "p1 p2 p3"
+		// ease: transition-timing-function
+		// delay: time
+		var transitionFunc = function (elem, properties, ease, duration, delay) {
+			var cssText = [],
+			props = [];
+			for (var name in properties) {
+            props.push(name);//提取要执行动画的属性
+
+            //提取动画目标样式
+            cssText.push(name + ':' +
+                    //如果是number，则追加px单位
+                    (typeof properties[name] === 'number' ? properties[name] + 'px' : properties[name]));
+        	}
+
+	        //添加transition样式
+	        cssText.push('transition-property:' + props.join(''));
+	        cssText.push('transition-timing-function:' + (ease || 'linear'));
+	        cssText.push('transition-duration:' + (duration || 2) + 's')
+	        cssText.push('transition-delay:' + (delay || 0));
+
+	        //添加元素样式
+	        monkey.style.cssText += ';' + cssText.join(';');
+	    };
+
+	    monkey.onclick = function () {
+	    	// transitionFunc(monkey, { background: "red" });
+	    	monkey.className = "transition1"
+	    }
+
+	    monkey.addEventListener('transitionend', function (e) {
+	    	console.log("duration: "+ e.elapsedTime);
+	    	transitionFunc(monkey, { left: "400px" });
+	    });
+
+
+
+		// listen for animation start
+		banana.addEventListener("animationstart",function(e){
+			console.log("log at beginning of banana animation: " + e.elapsedTime);
+		},false);
+
+		// listen for animation iteration
+		banana.addEventListener("animationiteration",function(e){
+			console.log("log at beginning of each subsequent iteration: " + e.elapsedTime);
+			banana.style.animationPlayState = "paused";
+			// document.getElementsByClassName("animation1");
+			// banana.className = "animation2";
+			banana.style.animationTimingFunction = "linear";
+			banana.style.animationPlayState = "running";
+		},false);
+
+		// listen for animation end
+		banana.addEventListener("animationend",function(e){
+			banana.className = "";
+			banana.style = "";
+			console.log("log at end of banana animation: " + e.elapsedTime);
+		},false);
+
+	    banana.onclick = function () {
+	    	banana.className = "animation1";
+	    };
+
+	</script>
+</body>
+</html>
