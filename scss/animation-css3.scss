@@ -1,0 +1,89 @@
+/*
+ * animation: name duration timing-function delay iteration-count direction;
+ *      name: keyframe名称
+ *      duration: 动画所需时间
+ *      timing-function: 动画的速度曲线
+ *      delay: 动画开始前的延迟
+ *      iteration-count: 播放次数
+ *      direction: 多次播放时，是否轮流反向播放
+ * animation-fill-mode: 动画开始前和结束时的状态
+ *      none: 默认
+ *      forwards: 动画结束后，保持最后一个关键帧状态
+ *      backwards: 动画开始前，保持第一个关键帧状态
+ *      both: forwards + backwards
+ */
+ @mixin Shake($animation:headShake 1s linear 0s 1 normal,$mode:none) {
+  animation: $animation;
+  animation-fill-mode:$mode;
+}
+
+.shake {
+  @include Shake;
+}
+
+@keyframes headShake {
+  0% {
+    transform: translateX(0);
+  }
+
+  6.5% {
+    transform: translateX(-10px) rotate(-5deg);
+  }
+
+  18.5% {
+    transform: translateX(10px) rotate(5deg);
+  }
+
+  31.5% {
+    transform: translateX(-10px) rotate(-5deg);
+  }
+
+  43.5% {
+    transform: translateX(10px) rotate(5deg);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+}
+
+ @mixin Rotate($animation:rotate-anim 1s linear 0s 1 normal,$mode:none) {
+  animation: $animation;
+  animation-fill-mode:$mode;
+}
+
+.rotate {
+  @include Rotate;
+}
+
+@keyframes rotate-anim {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+ @mixin Scale($animation:scale-anim 1s linear 0s 1 normal,$mode:none) {
+  animation: $animation;
+  animation-fill-mode:$mode;
+}
+
+.scale {
+  @include Scale;
+}
+
+@keyframes scale-anim {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
