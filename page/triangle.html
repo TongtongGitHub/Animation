@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>triangle</title>
+	<link rel="stylesheet" type="text/css" href="/css/triangle.css">
+</head>
+<body>
+	<div style="width:1200px;margin: 0 auto">
+		<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1200" height="800">
+			<g class="group" id="group">
+				<path d="M 150 400 L 300 200 L 450 400 Z" class="triangle" />
+				<path d="M 260 300 L 260 350" class="line1 line" />
+				<path d="M 340 300 L 340 350" class="line2 line" />
+
+			</g>
+
+			<animateMotion xlink:href="#group" dur="1s" begin="20s"	fill="freeze" path="M 0 0 Q -300 -10000 -600 0" />  
+
+			<path class="lt" d="M 1000 400 L 1020 370 L 1040 400 Z" fill="#ff6600"></path>
+		</svg>
+	</div>
+</body>
+</html>
