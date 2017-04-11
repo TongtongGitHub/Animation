@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache"><META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"><META HTTP-EQUIV="Expires" CONTENT="0">
+		<title>svg icons animation</title>
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript" src="/js/snap.svg.js"></script>
+	</head>
+	<body style="width: 1000px;margin: 100px auto;">
+    <a class="svg-money-hover"><svg height="64" width="64" id="svg-money" viewBox="0 0 16 16"></svg></div>
+    <a class="svg-cart-hover"><svg class="svg-cart-hover" height="64" width="64" id="svg-cart" viewBox="0 0 16 16"></svg></a>
+    <a class="svg-file-hover"><svg class="svg-file-hover" height="64" width="64" id="svg-file" viewBox="0 0 16 16"></svg></a>
+
+    <script type="text/javascript" src="/js/svg-animation-lib.js"></script>
+    <script type="text/javascript">
+    	var svgMoney = new SVGIcon({
+    		carrier: "#svg-money",
+    		iconName: "icon_dollar"
+    	});
+    	$(".svg-money-hover").hover(function() {
+    		svgMoney.start();
+    	}, function() {
+    		svgMoney.reverse();
+    	});
+    	var svgCart = new SVGIcon({
+    		carrier: "#svg-cart",
+    		iconName: "icon_cart"
+    	});
+    	$(".svg-cart-hover").hover(function() {
+    		svgCart.start();
+    	}, function() {
+    		svgCart.reverse();
+    	});
+    	var svgFile = new SVGIcon({
+    		carrier: "#svg-file",
+    		iconName: "icon_file"
+    	});
+    	$(".svg-file-hover").hover(function() {
+    		svgFile.start();
+    	}, function() {
+    		svgFile.reverse();
+    	});
+    </script>
+</body>
+</html>
