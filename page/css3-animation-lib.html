@@ -1,16 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>css3 lib</title>
-	<link rel="stylesheet" type="text/css" href="/css/css3-animation-lib.css">
-	<script type="text/javascript" src="/js/jquery.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>CSS3 animation lib</title>
+	<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/css3-animation.css">
+	<script type="text/javascript" src="../js/jquery.js"></script>	
 </head>
 <body>
-
 	<div class="container">
-		<div style="width: 50px;height: 50px;background: #ccc;" id="example1"></div>
+		<ul>
+			<li class="group1">
+				<div class="btn animate-btn-fillLeftRight">Button1</div>
+				<div class="btn animate-btn-fillBottom">Button2</div>
+				<div class="btn animate-btn-fillRight">Button3</div>
+				<div class="btn animate-btn-fillTopBottom">Button4</div>
+				<div class="btn animate-btn-fillCorner">Button5</div>
+				<div class="btn animate-btn-fillBackground">Button6</div>
+			</li>
+			<li class="group2">
+				<div class="btn animate-btn-slideDown"><span>Button1</span></div>
+				<div class="btn animate-btn-slideRight"><span>Button2</span></div>
+			</li>
+			<li class="group3">
+				<div class="btn btn3a">Button1</div>
+				<div class="btn btn3b">Button2</div>
+			</li>
+			<li class="group4">
+				<div class="btn btn4a"></div>
+				<div class="btn btn4b"></div>
+			</li>
+			<li class="group5">
+				<div class="btn btn5a"></div>
+				<div class="btn btn5b"></div>
+			</li>
+			<li class="group6">
+				<div class="btn btn6a">Send</div>
+				<div class="btn btn6b">Send</div>
+			</li>
+		</ul>
 	</div>
 
-	<script type="text/javascript" src="/js/css3-animation-lib.js"></script>
+	<script type="text/javascript">
+		//只能判断IE 6，7，8，9
+		var isIE = function(ver){
+			var b = document.createElement('b');
+			b.innerHTML = '<!--[if IE ' + ver + ']><i></i><![endif]-->';
+			return b.getElementsByTagName('i').length === 1;
+		}
+		if(isIE(6) || isIE(7) || isIE(8)){
+			$(".group1").find(".btn").addClass('btn-ie1');
+			$(".group2").find(".btn").addClass('btn-ie2');
+		}
+
+		$(".group3 .btn").on("click", function(){
+			var that = this;
+			$(this).addClass('btn-active');
+			setTimeout(function () {
+				$(that).removeClass('btn-active');
+			}, 500);
+		});
+		$(".group4 .btn").on("click", function(){
+			var that = this;
+			$(this).addClass('btn-active');
+			setTimeout(function () {
+				$(that).removeClass('btn-active');
+			}, 1200);
+		});
+		$(".group5 .btn").on("click", function(){
+			var that = this;
+			$(this).addClass('btn-active');
+			setTimeout(function () {
+				$(that).removeClass('btn-active');
+			}, 1200);
+		});
+		$(".group6 .btn").on("click", function(){
+			var that = this;
+			$(this).addClass('btn-active');
+			setTimeout(function () {
+				$(that).removeClass('btn-active');
+			}, 1200);
+		});
+	</script>
 </body>
 </html>

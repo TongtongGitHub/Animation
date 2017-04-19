@@ -69,12 +69,12 @@
                 start: function(){
                     Snap.animate(0, 180, function(value) {
                         moneyG.transform(new Snap.Matrix().rotate(value, 7.5,7.5));
-                    }, 200);
+                    }, 500, mina.backout);
                 },
                 reverse:function(){
                     Snap.animate(180, 0, function(value) {
                         moneyG.transform(new Snap.Matrix().rotate(value, 7.5,7.5));
-                    }, 200);
+                    }, 500, mina.backin);
                 }
             }
 
@@ -136,59 +136,52 @@
                 stroke: "#fff"
             });
 
-            that.animateFn = {
-                start: function(){
+
+            that.steps = {
+                step1: function(){
                     Snap.animate(4.5, 10.5, function(value) {
                         fileL2.attr({
                             x2:value
                         });
-                    }, 300);
-
-                    Snap.animate(4.5, 4.5, function(value) {
+                    }, 200,mina.easeinout);
+                },
+                step2: function(){
+                    Snap.animate(4.5, 10.5, function(value) {
                         fileL3.attr({
                             x2:value
                         });
-                    }, 100,function(){
-                        Snap.animate(4.5, 10.5, function(value) {
-                            fileL3.attr({
-                                x2:value
-                            });
-                        }, 280);
-                    });
-
-                    Snap.animate(4.5, 4.5, function(value) {
+                    }, 200,mina.easeinout,function(){});
+                },
+                step3: function(){
+                    Snap.animate(4.5, 10.5, function(value) {
                         fileL4.attr({
                             x2:value
                         });
-                    }, 200,function(){
-                        Snap.animate(4.5, 10.5, function(value) {
-                            fileL4.attr({
-                                x2:value
-                            });
-                        }, 260);
-                    });
-                    Snap.animate(4.5, 4.5, function(value) {
+                    }, 200,mina.easeinout,function(){});
+                },
+                step4: function(){
+                    Snap.animate(4.5, 10.5, function(value) {
                         fileL5.attr({
                             x2:value
                         });
-                    }, 300,function(){
-                        Snap.animate(4.5, 10.5, function(value) {
-                            fileL5.attr({
-                                x2:value
-                            });
-                        }, 240);
-                    });
-                    Snap.animate(4.5, 4.5, function(value) {
+                    }, 200,mina.easeinout,function(){});
+                },
+                step5: function(){
+                    Snap.animate(4.5, 8.5, function(value) {
                         fileL6.attr({
                             x2:value
                         });
-                    }, 400,function(){
-                        Snap.animate(4.5, 8.5, function(value) {
-                            fileL6.attr({
-                                x2:value
-                            });
-                        }, 220);
-                    });
+                    }, 200,mina.easeinout);
+                }
+            };
+
+            that.animateFn = {
+                start: function(){
+                    setTimeout(that.steps.step1,100);
+                    setTimeout(that.steps.step2,200);
+                    setTimeout(that.steps.step3,300);
+                    setTimeout(that.steps.step4,400);
+                    setTimeout(that.steps.step5,500);
                 },
                 reverse:function(){
                 }
