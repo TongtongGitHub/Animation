@@ -1,5 +1,3 @@
-# Animation
+# Triangle svg animation
 
-some examples for JS Animation, CSS3 Animation and SVG Animation.
-
-# gulp run dev
+SVG animation using css, just for fun.
